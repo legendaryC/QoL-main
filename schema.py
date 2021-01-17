@@ -197,8 +197,9 @@ class Query(ObjectType):
         patient_ID = kwargs.get('patient_ID')
         # start = transferJSTime(kwargs.get('start'))
         end, start = None, None
-	print('#########JIAN CHEN#######################')
-        new_entry=Albumin(patient_ID='pa0001',date_time=datetime.datetime(2020, 5, 17),value=1.2)
+        print('#########JIAN CHEN#######################')
+        new_entry = Albumin(patient_ID='pa0001',
+                            date_time=datetime.datetime(2020, 5, 17), value=1.2)
         new_entry.save()
         if kwargs.get('start'):
             start = transferJSTime(kwargs.get('start'))
