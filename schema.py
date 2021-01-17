@@ -2,6 +2,7 @@ import graphene
 from graphene_django.types import DjangoObjectType, ObjectType
 from .models import *
 import datetime
+from .data import ImportData
 
 
 class AlbuminType(DjangoObjectType):
@@ -198,9 +199,8 @@ class Query(ObjectType):
         # start = transferJSTime(kwargs.get('start'))
         end, start = None, None
         print('#########JIAN CHEN#######################')
-        new_entry = Albumin(patient_ID='pa0001',
-                            date_time=datetime.datetime(2020, 5, 17), value=1.2)
-        new_entry.save()
+        obj = ImportData()
+        obj.get_data()
         if kwargs.get('start'):
             start = transferJSTime(kwargs.get('start'))
         if kwargs.get('end'):
