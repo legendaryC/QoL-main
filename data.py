@@ -16,7 +16,7 @@ class ImportData:
 
     def get_data(self):
         # new_entry = Albumin(patient_ID='pa0001',
-        #                     date_time=datetime.datetime(2020, 5, 17), value=1.2)
+        #                     date_time=datetime.datetime(2020, 5, 17), value=1.2)  kljlk
         # new_entry.save()
 
         xlsx_file = Path('dataSet.xlsx')
