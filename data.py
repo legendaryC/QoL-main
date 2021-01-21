@@ -19,7 +19,7 @@ class ImportData:
         #                     date_time=datetime.datetime(2020, 5, 17), value=1.2)
         # new_entry.save()
 
-        xlsx_file = Path('SimData', 'play_data.xlsx')
+        xlsx_file = Path('dataSet.xlsx')
         wb_obj = openpyxl.load_workbook(xlsx_file)
 
         # Read the active sheet:
