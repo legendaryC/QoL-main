@@ -86,7 +86,7 @@ class ImportData:
                 '-|/', row[20].value)
             weight = random.randint(80, 180)
             dialysis = Dialysis(patient_ID=self.getID(i), date_time=datetime.datetime(int(dialysis_year), int(dialysis_month), int(
-                dialysis_day)), bp=random.randint(100, 140)+"/"+random.randint(60, 80), weight=weight+float(row[22].value), kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4),
+                dialysis_day)), bp=str(random.randint(100, 140))+"/"+str(random.randint(60, 80)), weight=weight+float(row[22].value), kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4),
             dialysis.save()
             if int(dialysis_day) == 0:
                 before_dialysis = Dialysis(patient_ID=self.getID(i), date_time=datetime.datetime(int(dialysis_year), int(dialysis_month)-1, 30), bp=random.randint(100, 140)+"/"+random.randint(
@@ -94,8 +94,8 @@ class ImportData:
 
                 before_dialysis.save()
             else:
-                before_dialysis = Dialysis(patient_ID=self.getID(i), date_time=datetime.datetime(int(dialysis_year), int(dialysis_month), int(dialysis_day)-1), bp=random.randint(
-                    100, 140)+"/"+random.randint(60, 80), weight=weight, kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4)
+                before_dialysis = Dialysis(patient_ID=self.getID(i), date_time=datetime.datetime(int(dialysis_year), int(dialysis_month), int(dialysis_day)-1), bp=str(random.randint(
+                    100, 140))+"/"+str(random.randint(60, 80)), weight=weight, kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4)
                 before_dialysis.save()
 
             # else:
