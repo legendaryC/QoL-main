@@ -84,9 +84,9 @@ class ImportData:
             #NOTE: Dialysis_data
             dialysis_day, dialysis_month, dialysis_year = re.split(
                 '-|/', row[20].value)
-            weight = random.randint(80, 180)
+            # weight = random.randint(80, 180)
             dialysis = Dialysis(patient_ID=self.getID(i), date_time=datetime.datetime(int(dialysis_year), int(dialysis_month), int(
-                dialysis_day)), bp=str(random.randint(100, 140))+"/"+str(random.randint(60, 80)), weight=weight+float(row[22].value), kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4),
+                dialysis_day)), bp=str(random.randint(100, 140))+"/"+str(random.randint(60, 80)), weight=float(row[22].value), kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4),
             dialysis.save()
             # NOTE: Before_Dialysis:
             # if int(dialysis_day) == 0:
