@@ -30,8 +30,11 @@ class ImportData:
             # print(row[0].value, end='/n')
             if row[0].value:
                 i = row[0].value
-                info_day, info_month, info_year = re.split(
-                    '-|/', row[3].value[0:10])
+                if type(row[3].value) is str:
+                    info_day, info_month, info_year = re.split(
+                        '-|/', row[3].value)
+                else:
+                    info_day, info_month, info_year = row[3].value.day, row[3].value.month, row[3].value.year
                 if Medical_Info.objects.filter(patient_ID=self.getID(i)):
                     continue
                 medical_Info = Medical_Info(patient_ID=self.getID(i),
@@ -44,8 +47,11 @@ class ImportData:
                 #     print(cell.value, end=" ")
                 # print()
             #NOTE: Lab_data
-            print("##", str(row[6].value)[0:10])
-            lab_day, lab_month, lab_year = re.split('-|/', row[6].value[0:10])
+            print("##", str(row[6].value))
+            if type(row[6].value) is str:
+                lab_day, lab_month, lab_year = re.split('-|/', row[6].value)
+            else:
+                lab_day, lab_month, lab_year = row[6].value.day, row[6].value.month, row[6].value.year
 
             if Albumin.objects.filter(patient_ID=self.getID(i), date_time=datetime.datetime(int(lab_year), int(lab_month), int(lab_day))):
                 continue
@@ -90,8 +96,14 @@ class ImportData:
             comorbidities.save()
 
             #NOTE: Dialysis_data
-            dialysis_day, dialysis_month, dialysis_year = re.split(
-                '-|/', row[20].value)
+            if type(row[20].value) is str:
+
+                dialysis_day, dialysis_month, dialysis_year = re.split(
+                    '-|/', row[20].value)
+            else:
+                dialysis_day, dialysis_month, dialysis_year = row[
+                    20].value.day, row[20].value.month, row[20].value.year
+
             # weight = random.randint(80, 180)
             dialysis = Dialysis(patient_ID=self.getID(i), date_time=datetime.datetime(int(dialysis_year), int(dialysis_month), int(
                 dialysis_day)), bp=str(random.randint(100, 140))+"/"+str(random.randint(60, 80)), weight=float(row[22].value), kt_v_ratio=float(row[23].value), temperature=random.randint(950, 1020)/10, pulse_rate=random.randint(60, 100), dialysis_duration=4)
