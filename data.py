@@ -45,6 +45,7 @@ class ImportData:
             #NOTE: Lab_data
 
             lab_day, lab_month, lab_year = re.split('-|/', row[6].value)
+            print(lab_day, lab_month, lab_year)
             if Albumin.objects.filter(patient_ID=self.getID(i), date_time=datetime.datetime(int(lab_year), int(lab_month), int(lab_day))):
                 continue
             albumin = Albumin(patient_ID=self.getID(i),
