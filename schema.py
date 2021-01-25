@@ -198,9 +198,9 @@ class Query(ObjectType):
         patient_ID = kwargs.get('patient_ID')
         # start = transferJSTime(kwargs.get('start'))
         end, start = None, None
-        print('#########JIAN CHEN#######################')
-        obj = ImportData()
-        obj.get_data()
+        # print('#########JIAN CHEN#######################')
+        # obj = ImportData()
+        # obj.get_data()
         if kwargs.get('start'):
             start = transferJSTime(kwargs.get('start'))
         if kwargs.get('end'):
