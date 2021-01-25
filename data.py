@@ -43,7 +43,10 @@ class ImportData:
                 #     print(cell.value, end=" ")
                 # print()
             #NOTE: Lab_data
+
             lab_day, lab_month, lab_year = re.split('-|/', row[6].value)
+            if Albumin.objects.filter(patient_ID=self.getID(i), date_time=datetime.datetime(int(lab_year), int(lab_month), int(lab_day))):
+                continue
             albumin = Albumin(patient_ID=self.getID(i),
                               date_time=datetime.datetime(int(lab_year), int(lab_month), int(lab_day)), value=float(row[7].value))
             albumin.save()
