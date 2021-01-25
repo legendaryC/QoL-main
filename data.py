@@ -31,8 +31,11 @@ class ImportData:
             if row[0].value:
                 i = row[0].value
                 info_day, info_month, info_year = re.split('-|/', row[3].value)
+                if Medical_Info.objects.filter(patient_ID=self.getID(i)):
+                    continue
                 medical_Info = Medical_Info(patient_ID=self.getID(i),
                                             date_time=datetime.datetime(int(info_year), int(info_month), int(info_day)), ckd=float(row[16].value), first_dialysis_date=datetime.datetime(int(info_year), int(info_month), int(info_day)), number_of_dialysis=int(row[4].value), expected_number_of_dialysis=int(row[25].value), dialysis_frequency=2)
+
                 medical_Info.save()
                 # new_entry.save()
 
