@@ -202,7 +202,7 @@ class Query(ObjectType):
         # print('#########JIAN CHEN#######################')
         # obj = ImportData()
         # obj.get_data()
-        obj = ImportFeedback
+        obj = ImportFeedback()
         obj.get_data()
         if kwargs.get('start'):
             start = transferJSTime(kwargs.get('start'))
