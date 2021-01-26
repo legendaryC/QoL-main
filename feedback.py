@@ -51,7 +51,9 @@ class ImportFeedback:
             # if type(row[6].value) is str:
             #     lab_day, lab_month, lab_year = re.split('-|/', row[6].value)
             # else:
-            lab_day, lab_month, lab_year = row[3].value.day, row[3].value.month, row[3].value.year
+            feedback_date = datetime.datetime.strptime(
+                row[3].value, '%b %d %Y')
+            lab_day, lab_month, lab_year = feedback_date.day, feedback_date.month, feedback_date.year
 
             if Baseline_Survey.objects.filter(patient_ID=self.getID(i), date_time=datetime.datetime(int(lab_year), int(lab_month), int(lab_day))):
                 continue
