@@ -6,7 +6,7 @@ import random
 import re
 
 
-class ImportData:
+class ImportFeedback:
     def __init__(self):
         super().__init__()
 

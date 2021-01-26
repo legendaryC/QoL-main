@@ -3,6 +3,7 @@ from graphene_django.types import DjangoObjectType, ObjectType
 from .models import *
 import datetime
 from .data import ImportData
+from .feedback import ImportFeedback
 
 
 class AlbuminType(DjangoObjectType):
@@ -201,6 +202,8 @@ class Query(ObjectType):
         # print('#########JIAN CHEN#######################')
         # obj = ImportData()
         # obj.get_data()
+        obj = ImportFeedback
+        obj.get_data()
         if kwargs.get('start'):
             start = transferJSTime(kwargs.get('start'))
         if kwargs.get('end'):
